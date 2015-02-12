@@ -45,14 +45,16 @@ public class PlayerScript : MonoBehaviour {
 
 		// 5 -move the game object
 		transform.Translate(movement);
-		//6 do not go past left or right or up 2* height of ship
+		
 
+
+	   
 
 
 		//shooting
 		bool shoot = Input.GetButtonDown("Fire1");
 		shoot |= Input.GetButtonDown("Fire2");
-
+		
 		if(shoot)
 		{
 			WeaponScript weapon = GetComponent<WeaponScript>();
@@ -67,8 +69,8 @@ public class PlayerScript : MonoBehaviour {
 	
 		//6 make sure we are not outside of camera bounds
 		var dist = (transform.position - Camera.main.transform.position  ).z;
-
-		var leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0,0, dist )).x  ;
+		
+		var leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0,0, dist )).x    ;
 
 		var rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, dist)).x;
 
@@ -79,7 +81,7 @@ public class PlayerScript : MonoBehaviour {
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x , leftBorder, rightBorder), Mathf.Clamp(transform.position.y, topBorder, bottomBorder), transform.position.z);
 
 
-
+		
 
 
 
